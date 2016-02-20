@@ -31,8 +31,10 @@ module RPN
         else
           result = operands[0] -= 1
         end
-      when '+', '-', '*', '/'
+      when '+', '-', '*'
         result = operands[0].send operator, operands[1]
+      when '/'
+        result = operands[0].to_f / operands[1]
       else
         raise InvalidOperatorError.new "Unable to handle operator: #{operator}"
       end
