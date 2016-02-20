@@ -15,14 +15,11 @@ class RpnCalc
       @stack.push number
     else
       arity = @math.arity term
-      if arity == 1
-        op1 = @stack.pop
-        result = @math.compute term, op1
-      else
-        op2 = @stack.pop
-        op1 = @stack.pop
-        result = @math.compute term, op1, op2
+      operands = []
+      arity.times do
+        operands.push @stack.pop
       end
+      result = @math.compute term, *(operands.reverse)
       @stack.push result
     end
   end
