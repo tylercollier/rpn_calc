@@ -5,6 +5,9 @@ module RPN
     def numeric_cast(input)
       # We'd use the i18n library if internationalization is needed, e.g. to
       # look for commas as the decimal separator.
+      # Casting to an integer, as opposed to always a float, is one simple way
+      # to output an integer when the input is an integer (i.e. no decimal
+      # shown), as the example gist does.
       if /\./ =~ input
         Float input rescue nil
       else
