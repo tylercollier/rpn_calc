@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'app/rpn_calc.rb'
+require_relative 'app/rpn_calc'
 
 class Runner
   def prompt(output)
