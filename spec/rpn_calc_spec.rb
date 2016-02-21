@@ -19,4 +19,8 @@ describe RpnCalc do
     end
     expect(subject.peek).to eq(3.5)
   end
+
+  it 'issues an error when in invalid sequence of operations is entered' do
+    expect { subject.add_term '+' }.to raise_error InvalidSequenceError
+  end
 end

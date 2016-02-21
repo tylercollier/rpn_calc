@@ -14,8 +14,12 @@ class Runner
       return if input == nil
       chomped = input.chomp
       return if chomped == 'q'
-      calc.add_term chomped
-      puts calc.peek
+      begin
+        calc.add_term chomped
+        puts calc.peek
+      rescue => error
+        puts error.message
+      end
     end
   end
 end

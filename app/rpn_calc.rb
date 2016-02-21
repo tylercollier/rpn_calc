@@ -1,6 +1,8 @@
 require 'bigdecimal'
 require_relative 'rpn/math'
 
+class InvalidSequenceError < StandardError; end
+
 class RpnCalc
   def initialize
     super
@@ -15,6 +17,9 @@ class RpnCalc
       @stack.push number
     else
       arity = @math.arity term
+      if @stack.size < arity
+        raise InvalidSequenceError.new "Invalid sequence: #{term} is not a valid operator now. Please check your RPN manual and try again."
+      end
       operands = []
       arity.times do
         operands.push @stack.pop
